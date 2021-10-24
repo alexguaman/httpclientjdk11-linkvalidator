@@ -1,0 +1,5 @@
+https://httpstat.ec/500?sleep=2000
+https://httpstat.us/500?sleep=2000
+https://httpstat.us/200?sleep=2000
+https://www.alexguaman.com
+https://httpstat.us/200
