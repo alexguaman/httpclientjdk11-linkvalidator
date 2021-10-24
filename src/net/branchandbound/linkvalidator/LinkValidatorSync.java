@@ -7,13 +7,17 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 
 public class LinkValidatorSync {
 
 	private static HttpClient client;
 
 	public static void main(String[] args) throws IOException {
-		client = HttpClient.newHttpClient();
+		client = HttpClient.newBuilder()
+				.connectTimeout(Duration.ofSeconds(3))
+				.followRedirects(HttpClient.Redirect.NORMAL)
+				.build();
 
 		Files.lines(Path.of("urls.txt")).map(LinkValidatorSync::validateLink).forEach(System.out::println);
 	}
